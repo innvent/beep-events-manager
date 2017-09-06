@@ -5,8 +5,7 @@ class DbManager
 
   include Singleton
 
-  def initialize
-    @db_config = 
+  def initialize    
     @conn = PG.connect( host: get_config_value(:host), 
                         hostaddr: get_config_value(:hostaddr), 
                         dbname: get_config_value(:dbname), 
