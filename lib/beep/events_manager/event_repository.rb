@@ -39,27 +39,6 @@ module Beep
           events << event
         end
 
-
-        #   do |result|
-        #   result.each do |row|
-             
-        #   end
-        # end
-
-        
-
-        # @conn.exec(sql) do |result|              
-        #   result.each do |row|                
-        #     event = ::Beep::EventsManager::Event.new(id: row['id'], 
-        #                                             object_id: row['object_id'], 
-        #                                             date: row['date'], 
-        #                                             event_data: row['event_data'], 
-        #                                             object_domain: row['object_domain'], 
-        #                                             object_type: row['object_type'])
-        #     events << event            
-        #   end
-        # end
-
         events
 
       end
