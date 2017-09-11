@@ -3,12 +3,6 @@
 
 
 ## Installation
-### Criando o database
-```sql
-CREATE DATABASE beep_events
-CREATE TABLE events (id SERIAL, object_id integer, date timestamp, event_data json, object_domain varchar(30), object_type varchar(30))
-```
-
 Add this line to your application's Gemfile:
 
 ```ruby
@@ -18,9 +12,18 @@ gem "beep-events_manager", :github => "beep-saude/beep-events-manager", :tag => 
 And then execute:
 
     $ bundle
+    
+## Criando o database
+```sql
+CREATE DATABASE beep_events
+CREATE TABLE events (id SERIAL, object_id integer, date timestamp, event_data json, object_domain varchar(30), object_type varchar(30))
+```
 
-Or install it yourself as:
-
-    $ gem install beep-events_manager
+### crie o arquivo de configuração no initializer event_manager_config.rb
+```ruby
+config = Beep::EventsManager::Config.instance
+config.object_domain = "app-name"
+config.database_config = {dbname:"beep_events", user:"", host:"localhost", sslmode:'disable'}
+```
 
 ## Usage
