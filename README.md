@@ -12,7 +12,7 @@ CREATE TABLE events (id SERIAL, object_id integer, date timestamp, event_data js
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'beep-events_manager'
+gem "beep-events_manager", :github => "beep-saude/beep-events-manager", :tag => "0.1.1"
 ```
 
 And then execute:
