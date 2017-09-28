@@ -24,9 +24,9 @@ module Beep
 
       end
 
-      def get_by_object_id id
+      def get_by_object_id id, object_type
         events = []
-        sql = "SELECT * FROM events WHERE object_id = #{id}"
+        sql = "SELECT * FROM events WHERE object_id = #{id} and object_type = '#{object_type}'"
 
         rows = @db.execute(sql)
         rows.each do |row|
