@@ -4,7 +4,7 @@ module Beep
   module EventsManager
 
   	class Config
-	  		
+
 		 	include Singleton
 
 		  attr_accessor :object_domain, :database_config
