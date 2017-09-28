@@ -7,7 +7,7 @@ module Beep
         @db = DbManager.instance
       end
 
-      def create(name:, object_id:, event_name:, event_data:, object_domain:, object_type:)
+      def create(object_id:, event_name:, event_data:, object_domain:, object_type:)
 
         saved = false
 
@@ -30,12 +30,12 @@ module Beep
 
         rows = @db.execute(sql)
         rows.each do |row|
-          event = ::Beep::EventsManager::Event.new(id: row['id'], 
-                                                   object_id: row['object_id'], 
-                                                   date: row['date'], 
+          event = ::Beep::EventsManager::Event.new(id: row['id'],
+                                                   object_id: row['object_id'],
+                                                   date: row['date'],
                                                    event_name: row['event_name'],
-                                                   event_data: row['event_data'], 
-                                                   object_domain: row['object_domain'], 
+                                                   event_data: row['event_data'],
+                                                   object_domain: row['object_domain'],
                                                    object_type: row['object_type'])
           events << event
         end

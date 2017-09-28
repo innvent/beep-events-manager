@@ -9,8 +9,7 @@ module Beep
 
         def store(event)
 
-          event = @rep.create( name: event.name,
-                              object_domain: ::Beep::EventsManager::Config.instance.object_domain,
+          event = @rep.create(object_domain: ::Beep::EventsManager::Config.instance.object_domain,
                               object_type: event.object_type,
                               object_id: event.object_id,
                               event_name: event.event_name,
