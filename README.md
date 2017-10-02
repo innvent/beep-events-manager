@@ -21,23 +21,16 @@ config.database_config = { dbname: "beep_events", user: "", host: "localhost", s
 
 ## Usage
 
-### Criar um evento
-```ruby
-  event = Beep::EventsManager::Event.new(id: 0, object_id: 1, date: Time.zone.now, event_name: "seu-evento", event_data: { foo: "bar"}, object_domain: "app-name", object_type: "Object")
-  event_store = Beep::EventsManager::EventStore.new
-  event_store.store( event )
-```
-
-### Usar Publisher/Subscriber
+### Publicar um evento
 
 ```ruby
-  event = Beep::EventsManager::Event.new(id: 0, object_id: 1, date: Time.zone.now, event_name: "seu-evento", event_data: { foo: "bar"}, object_domain: "app-name", object_type:
-
-  handlers = [ MyHandler.new, MyEventStoreHandler.new, EventStoreHandler.build ]
-  publisher = Beep::EventsManager::Publisher.new
-  publisher.subscribe( "seu-evento", handlers)
-
-  publisher.publish(event)
+  events_service = Beep::EventsManager::EventsService.new
+  events_service.publish( event_name:, object_id:, object_type:, object_data: )
 ```
 
-* Para salvar na tabela beep_events, usar o EventStoreHandler.build
+### Listar os eventos de um objeto
+
+```ruby
+  events_service = Beep::EventsManager::EventsService.new
+  events_service.list_events( object_id:, object_type:, object_domain: )
+```

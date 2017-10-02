@@ -4,7 +4,7 @@ module Beep
     class EventStore
 
         def initialize
-          @rep = EventsManager::EventRepository.new
+          @rep = EventRepository.new
         end
 
         def store(event)
@@ -21,10 +21,11 @@ module Beep
 
         end
 
-        def list object_id, object_type
-          @rep.get_by_object_id object_id, object_type
+        def list object_id, object_type, object_domain
+          events = @rep.get_by_object_id object_id, object_type, object_domain
+          events.map { |event| event.to_hash }
         end
-    end
 
+    end
   end
 end
