@@ -15,8 +15,7 @@ CREATE TABLE events (id SERIAL, object_id integer, date timestamp, event_name va
 crie o arquivo de configuração no initializer event_manager_config.rb
 ```ruby
 config = Beep::EventsManager::Config.instance
-config.object_domain = "app-name"
-config.database_config = {dbname:"beep_events", user:"", host:"localhost", sslmode:'disable'}
+config.database_config = { dbname: "beep_events", user: "", host: "localhost", sslmode: 'disable' }
 ```
 
 ## Usage
