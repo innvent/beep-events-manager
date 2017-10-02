@@ -25,12 +25,12 @@ config.database_config = { dbname: "beep_events", user: "", host: "localhost", s
 
 ```ruby
   events_service = Beep::EventsManager::EventsService.new
-  events_service.publish( event_name:, object_id:, object_type:, object_data: )
+  events_service.publish( event_name: "seu-evento", object_id: 1, object_type: "Call", object_data: { foo: "bar" } )
 ```
 
 ### Listar os eventos de um objeto
 
 ```ruby
   events_service = Beep::EventsManager::EventsService.new
-  events_service.list_events( object_id:, object_type:, object_domain: )
+  events_service.list_events( object_id: 1, object_type: "Call", object_domain: "app-name" )
 ```
