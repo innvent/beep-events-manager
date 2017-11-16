@@ -19,14 +19,13 @@ module Beep
           saved = false
         end
 
-
         saved
 
       end
 
       def get_by_object_id id, object_type, object_domain
         events = []
-        sql = "SELECT * FROM events WHERE object_id = #{id} and object_type = '#{object_type}' and object_domain = '#{object_domain}'"
+        sql = "SELECT * FROM events WHERE object_id = #{id} and object_type = '#{object_type}' and object_domain = '#{object_domain}' order by date asc"
 
         rows = @db.execute(sql)
         rows.each do |row|
