@@ -7,9 +7,10 @@ class DbManager
     DbManager.new
   end
 
-  def execute(sql)
+  def execute(sql, args = [])
     conn   = create_connection
-    result = conn.exec(sql)
+    conn.prepare('clausure', sql)
+    result = conn.exec_prepared('clausure', args)
     conn.close
 
     result

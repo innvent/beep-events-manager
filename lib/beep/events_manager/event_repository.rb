@@ -8,19 +8,10 @@ module Beep
       end
 
       def create(object_id:, event_name:, event_data:, object_domain:, object_type:)
+        sql    = "INSERT INTO EVENTS (object_id, date, event_name, event_data, object_domain, object_type) VALUES ($1, now(), $2, $3, $4, $5)"
+        result = @db.execute(sql, [object_id, event_name, event_data.to_json, object_domain, object_type] )
 
-        saved = false
-
-        sql = "INSERT INTO EVENTS (object_id, date, event_name, event_data, object_domain, object_type) VALUES (#{object_id}, now(), '#{event_name}','#{event_data.to_json}', '#{object_domain}', '#{object_type}')"
-        begin
-          @db.execute(sql)
-          saved = true
-        rescue Exception => e
-          saved = false
-        end
-
-        saved
-
+        result
       end
 
       def get_by_object_id id, object_type, object_domain
