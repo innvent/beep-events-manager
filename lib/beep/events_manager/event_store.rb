@@ -8,14 +8,8 @@ module Beep
         end
 
         def store(event)
-
-          object_domain = Beep::EventsManager::Config.instance.object_domain || event.object_domain
-
-          @rep.create(object_domain: object_domain,
-                              object_type: event.object_type,
-                              object_id: event.object_id,
-                              event_name: event.event_name,
-                              event_data: event.event_data )
+          event.object_domain = Beep::EventsManager::Config.instance.object_domain || event.object_domain
+          event.save
         end
 
         def list object_id, object_type, object_domain
