@@ -16,8 +16,8 @@ module Beep
         @event_store.list( object_id, object_type, object_domain )
       end
 
-      def list_events_after_id event_id:
-        @event_store.list_after_id( event_id )
+      def list_events_after_id event_id:, options: {}
+        @event_store.list_after_id( event_id, options: options )
       end
 
     end
