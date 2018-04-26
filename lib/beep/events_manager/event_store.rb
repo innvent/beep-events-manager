@@ -17,8 +17,8 @@ module Beep
           events.map { |event| event.to_hash }
         end
 
-        def list_after_id event_id, options: {}
-          events = @rep.list_all_after_id(event_id, options: options)
+        def list_all_after_date date, options: {}
+          events = @rep.list_all_after_date(date, options: options)
           events.map { |event| event.to_hash }
         end
 

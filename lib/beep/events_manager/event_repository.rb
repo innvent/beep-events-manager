@@ -11,8 +11,8 @@ module Beep
         Event.where(object_id: id, object_type: object_type, object_domain: object_domain)
       end
 
-      def list_all_after_id event_id, options: {}
-        Event.where("id > ?", event_id).where(options).order(id: :asc)
+      def list_all_after_date date, options: {}
+        Event.where("date > ?", date).where(options).order(date: :asc)
       end
 
     end
