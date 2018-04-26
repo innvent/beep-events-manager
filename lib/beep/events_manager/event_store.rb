@@ -17,6 +17,11 @@ module Beep
           events.map { |event| event.to_hash }
         end
 
+        def list_after_id event_id
+          events = @rep.list_all_after_id(event_id)
+          events.map { |event| event.to_hash }
+        end
+
     end
   end
 end
