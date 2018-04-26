@@ -12,7 +12,7 @@ module Beep
       end
 
       def list_all_after_id event_id, options: {}
-        Event.where("id >= ?", event_id).where(options)
+        Event.where("id > ?", event_id).where(options).order(id: :asc)
       end
 
     end
