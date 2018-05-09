@@ -8,7 +8,7 @@ module Beep
                           object_id: object_id,
                           date: Time.zone.now,
                           event_name: event_name,
-                          event_data: event_data.to_json,
+                          event_data: event_data,
                           object_type: object_type
         event
       end
