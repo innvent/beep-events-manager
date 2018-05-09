@@ -16,6 +16,9 @@ module Beep
         @event_store.list( object_id, object_type, object_domain )
       end
 
+      def list_events_after_date date:, options: {}
+        @event_store.list_all_after_date( date, options: options )
+      end
 
     end
   end
