@@ -21,8 +21,8 @@ module Beep
       end
 
       def connection_config
-      { 
-        adapter: "postgresql",
+      {
+        adapter: get_config_value(:adapter) || 'postgresql',
         encoding: "unicode",
         database: get_config_value(:dbname),
         host: get_config_value(:host),
@@ -31,12 +31,15 @@ module Beep
         password: get_config_value(:password)
       }
       end
-  
+
       def get_config_value(field)
         value =self.database_config[field]
         return (value == "") ? nil : value
       end
 
+      def test_mode?
+        self.database_config.include?(:test_mode) && self.database_config[:test_mode]
+      end
     end
 
   end
