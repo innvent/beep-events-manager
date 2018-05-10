@@ -5,12 +5,12 @@
 ## Installation
 
 ```ruby
-gem "beep-events_manager", :github => "beep-saude/beep-events-manager", :tag => "0.3.2"
+gem "beep-events_manager", :github => "beep-saude/beep-events-manager", :tag => "1.0"
 ```
 Criando o database
 ```sql
 CREATE DATABASE beep_events
-CREATE TABLE events (id SERIAL, object_id integer, date timestamp, event_name varchar(100), event_data json, object_domain varchar(30), object_type varchar(30))
+CREATE TABLE events (id bigserial primary key, object_id integer, date timestamp, event_name varchar(100), event_data json, object_domain varchar(30), object_type varchar(30))
 ```
 crie o arquivo de configuração no initializer event_manager_config.rb
 ```ruby
@@ -33,4 +33,20 @@ config.configure_with({ dbname: "beep_events", user: "", host: "localhost", sslm
 ```ruby
   events_service = Beep::EventsManager::EventsService.new
   events_service.list_events( object_id: 1, object_type: "Call", object_domain: "app-name" )
+```
+
+## Corrigir problema de tabela de eventos com id sem pk
+
+Remover ids duplicados
+```sql
+DELETE FROM events
+  WHERE ctid = ANY(ARRAY(SELECT ctid
+                  FROM (SELECT row_number() OVER (PARTITION BY id), ctid
+                           FROM events) x
+                 WHERE x.row_number > 1));
+```
+
+Alterar a tabela para adicionar primary key
+```sql
+ALTER TABLE events ADD PRIMARY KEY (id);
 ```
