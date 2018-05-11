@@ -8,7 +8,7 @@ module Beep
       end
 
       def get_by_object_id id, object_type, object_domain
-        Event.where(object_id: id, object_type: object_type, object_domain: object_domain)
+        Event.where(object_id: id, object_type: object_type, object_domain: object_domain).order(date: :asc)
       end
 
       def list_all_after_date date, options: {}
@@ -18,4 +18,3 @@ module Beep
     end
   end
 end
-
