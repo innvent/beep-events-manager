@@ -5,7 +5,7 @@
 ## Installation
 
 ```ruby
-gem "beep-events_manager", :github => "beep-saude/beep-events-manager", :tag => "1.0"
+gem "beep-events_manager", :github => "beep-saude/beep-events-manager", :tag => "1.0.1"
 ```
 Criando o database
 ```sql
