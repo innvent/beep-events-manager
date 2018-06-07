@@ -1,15 +1,15 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'beep/events_manager/version'
+require 'moo/events_manager/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "beep-events_manager"
-  spec.version       = Beep::EventsManager::VERSION
+  spec.name          = "moo-events_manager"
+  spec.version       = Moo::EventsManager::VERSION
   spec.authors       = ["Iuri Menescal"]
-  spec.email         = ["iuri@beepsaude.com.br"]
+  spec.email         = ["iuri@moobile.com.br"]
   spec.summary       = %q{Gem para armazenar os eventos dos micros serviços}
-  spec.homepage      = "https://github.com/beep-saude/beep-events-manager"
+  spec.homepage      = "https://github.com/innvent/moo-events-manager"
 
   spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
   spec.bindir        = "exe"

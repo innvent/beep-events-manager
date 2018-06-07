@@ -1,4 +1,4 @@
-module Beep
+module Moo
   module EventsManager
     class EventFactory
 

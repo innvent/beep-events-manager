@@ -1,6 +1,6 @@
 require 'active_record'
 
-module Beep
+module Moo
   module EventsManager
 
     class Event < ActiveRecord::Base

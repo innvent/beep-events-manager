@@ -1,6 +1,6 @@
 require  'singleton'
 
-module Beep
+module Moo
   module EventsManager
 
     class Config

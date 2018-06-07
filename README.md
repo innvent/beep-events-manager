@@ -16,7 +16,7 @@ crie o arquivo de configuração no initializer event_manager_config.rb
 ```ruby
 config = Moo::EventsManager::Config.instance
 config.object_domain = "app-name"
-config.configure_with({ dbname: "beep_events", user: "", host: "localhost", sslmode: 'disable'})
+config.configure_with({ dbname: "moo_events", user: "", host: "localhost", sslmode: 'disable'})
 ```
 
 ## Usage

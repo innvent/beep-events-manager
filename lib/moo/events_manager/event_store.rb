@@ -1,4 +1,4 @@
-module Beep
+module Moo
   module EventsManager
 
     class EventStore
@@ -8,7 +8,7 @@ module Beep
         end
 
         def store(event)
-          event.object_domain = Beep::EventsManager::Config.instance.object_domain || event.object_domain
+          event.object_domain = Moo::EventsManager::Config.instance.object_domain || event.object_domain
           event.save
         end
 
