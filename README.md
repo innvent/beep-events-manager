@@ -1,20 +1,20 @@
-# Beep::EventsManager
+# EventsManager
 
 
 
 ## Installation
 
 ```ruby
-gem "beep-events_manager", :github => "beep-saude/beep-events-manager", :tag => "1.0.1"
+gem "moo-events_manager", :github => "innvent/moo-events-manager", :tag => "1.0.1"
 ```
 Criando o database
 ```sql
-CREATE DATABASE beep_events
+CREATE DATABASE moo_events
 CREATE TABLE events (id bigserial primary key, object_id integer, date timestamp, event_name varchar(100), event_data json, object_domain varchar(30), object_type varchar(30))
 ```
 crie o arquivo de configuração no initializer event_manager_config.rb
 ```ruby
-config = Beep::EventsManager::Config.instance
+config = Moo::EventsManager::Config.instance
 config.object_domain = "app-name"
 config.configure_with({ dbname: "beep_events", user: "", host: "localhost", sslmode: 'disable'})
 ```
@@ -24,14 +24,14 @@ config.configure_with({ dbname: "beep_events", user: "", host: "localhost", sslm
 ### Publicar um evento
 
 ```ruby
-  events_service = Beep::EventsManager::EventsService.new
+  events_service = Moo::EventsManager::EventsService.new
   events_service.publish( event_name: "seu-evento", object_id: 1, object_type: "Call", object_data: { foo: "bar" } )
 ```
 
 ### Listar os eventos de um objeto
 
 ```ruby
-  events_service = Beep::EventsManager::EventsService.new
+  events_service = Moo::EventsManager::EventsService.new
   events_service.list_events( object_id: 1, object_type: "Call", object_domain: "app-name" )
 ```
 
